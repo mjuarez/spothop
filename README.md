@@ -27,8 +27,8 @@ SpotHop.GetPricing("m3.medium","us-east-1")
 <%= require 'spothop' %>
 driver_config:
   region: <%= ENV['AWS_REGION'] || 'us-east-1' %>
-  price: <%= SpotHop.GetPricing("m3.medium",ENV['AWS_REGION'])[:spot_price] %>
-  availability_zone: <%= SpotHop.GetPricing("m3.medium",ENV['AWS_REGION'])[:availability_zone] || 'us-east-1d' %>
+  price: <%= require 'spothop'; SpotHop.GetPricing(ENV['EC2_INSTANCE_TYPE'],ENV['AWS_REGION'])[:spot_price] %>
+  availability_zone: <%= require 'spothop'; SpotHop.GetPricing(ENV['EC2_INSTANCE_TYPE'],ENV['AWS_REGION'])[:availability_zone] %>
 ```
 
 ## Author
